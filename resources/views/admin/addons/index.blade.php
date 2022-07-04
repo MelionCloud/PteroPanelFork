@@ -6,7 +6,7 @@
 @extends('layouts.admin')
 
 @section('title')
-    Administration
+    Addons
 @endsection
 
 @section('content-header')
