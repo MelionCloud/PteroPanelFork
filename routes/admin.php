@@ -235,6 +235,6 @@ Route::group(['prefix' => 'nests'], function () {
 | Endpoint: /admin/addons
 |
 */
-Route::group(['preifx' => 'addons'], function() {
+Route::group(['prefix' => 'addons'], function() {
     Route::get('/', [Admin\Addons\AddonController::class, 'index'])->name('admin.addons');
 });
