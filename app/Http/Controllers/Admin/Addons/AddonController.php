@@ -7,13 +7,13 @@
  * https://opensource.org/licenses/MIT
  */
 
-namespace Pterodactyl\Http\Controllers\Admin\Nests;
+namespace Pterodactyl\Http\Controllers\Admin\Addons;
 
 use Javascript;
 use Illuminate\View\View;
 use Pterodactyl\Http\Controllers\Controller;
 
-class EggController extends Controller
+class AddonController extends Controller
 {
 
     public function __construct() {
