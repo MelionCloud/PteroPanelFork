@@ -21,7 +21,9 @@
 <div class="row">
     <div class="col-xs-12">
         <div class="box
-            @if($version->isLatestPanel())
+            @if($version->isDevVersion())
+                box-warning
+            @elseif($version->isLatestPanel())
                 box-success
             @else
                 box-danger
@@ -31,7 +33,9 @@
                 <h3 class="box-title">System Information</h3>
             </div>
             <div class="box-body">
-                @if ($version->isLatestPanel())
+                @if($version->isDevVersion())
+                    You are running Pterodactyl Panel Dev version <code>{{ config('app.version') }}</code>. Your panel is into the newest stuff!
+                @elseif ($version->isLatestPanel())
                     You are running Pterodactyl Panel version <code>{{ config('app.version') }}</code>. Your panel is up-to-date!
                 @else
                     Your panel is <strong>not up-to-date!</strong> The latest version is <a href="https://github.com/Pterodactyl/Panel/releases/v{{ $version->getPanel() }}" target="_blank"><code>{{ $version->getPanel() }}</code></a> and you are currently running version <code>{{ config('app.version') }}</code>.

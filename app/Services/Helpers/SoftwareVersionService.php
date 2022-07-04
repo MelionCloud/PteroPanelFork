@@ -12,11 +12,17 @@ use Pterodactyl\Exceptions\Service\Helper\CdnVersionFetchingException;
 class SoftwareVersionService
 {
     public const VERSION_CACHE_KEY = 'pterodactyl:versioning_data';
+    public const VERSION_ADDON_CACHE_KEY = 'pterodactyl:versioning_data_addons';
 
     /**
      * @var array
      */
     private static $result;
+
+    /**
+     * @var array
+     */
+    private static $resultAddons;
 
     /**
      * @var \Illuminate\Contracts\Cache\Repository
@@ -39,6 +45,7 @@ class SoftwareVersionService
         $this->client = $client;
 
         self::$result = $this->cacheVersionData();
+        self::$resultAddons = $this->cacheAddonVersionData();
     }
 
     /**
@@ -49,6 +56,16 @@ class SoftwareVersionService
     public function getPanel()
     {
         return Arr::get(self::$result, 'panel') ?? 'error';
+    }
+
+    /**
+     * Get the latest version of the panel from the Addon CDN servers.
+     *
+     * @return string
+     */
+    public function getAddonsPanel()
+    {
+        return Arr::get(self::$resultAddons, 'name') ?? 'error';
     }
 
     /**
@@ -82,17 +99,33 @@ class SoftwareVersionService
     }
 
     /**
+     * Checks if the panel is up a development version.
+     *
+     * @return bool
+     */
+    public function isDevVersion()
+    {
+        return str_contains($appVersion, '-');
+    }
+
+    /**
      * Determine if the current version of the panel is the latest.
      *
      * @return bool
      */
     public function isLatestPanel()
     {
-        if (config()->get('app.version') === 'canary') {
+        $appVersion = config()->get('app.version');
+        if ($appVersion === 'canary') {
             return true;
         }
 
-        return version_compare(config()->get('app.version'), $this->getPanel()) >= 0;
+        if (str_contains($appVersion, '-')) {
+            return version_compare($appVersion, $this->getPanel()) >= 0;
+        }
+
+
+        return version_compare($appVersion, $this->getPanel()) >= 0;
     }
 
     /**
@@ -121,6 +154,29 @@ class SoftwareVersionService
         return $this->cache->remember(self::VERSION_CACHE_KEY, CarbonImmutable::now()->addMinutes(config()->get('pterodactyl.cdn.cache_time', 60)), function () {
             try {
                 $response = $this->client->request('GET', config()->get('pterodactyl.cdn.url'));
+
+                if ($response->getStatusCode() === 200) {
+                    return json_decode($response->getBody(), true);
+                }
+
+                throw new CdnVersionFetchingException();
+            } catch (Exception $exception) {
+                return [];
+            }
+        });
+    }
+
+
+    /**
+     * Keeps the versioning cache up-to-date with the latest results from the Addon CDN.
+     *
+     * @return array
+     */
+    protected function cacheAddonVersionData()
+    {
+        return $this->cache->remember(self::VERSION_ADDON_CACHE_KEY, CarbonImmutable::now()->addMinutes(config()->get('pterodactyl.cdn.cache_time', 60)), function () {
+            try {
+                $response = $this->client->request('GET', config()->get('pterodactyl.cdn.addons_url'));
 
                 if ($response->getStatusCode() === 200) {
                     return json_decode($response->getBody(), true);

@@ -124,6 +124,7 @@ return [
     'cdn' => [
         'cache_time' => 60,
         'url' => 'https://cdn.pterodactyl.io/releases/latest.json',
+        'addons_url' => 'https://api.github.com/repos/MelionCloud/PteroPanelFork/releases/latest',
     ],
 
     /*

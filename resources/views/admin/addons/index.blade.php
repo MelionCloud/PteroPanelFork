@@ -33,14 +33,14 @@
 </div>
 <div class="row">
     <div class="col-xs-6 col-sm-3 text-center">
-        <a href="https://discord.gg/devsky"><button class="btn btn-warning" style="width:100%;"><i class="fa fa-fw fa-support"></i> Get Help <small>(via Discord)</small></button></a>
+        <a href="https://discord.gg/devsky"><button class="btn btn-warning" style="width:100%;" target="_blank"><i class="fa fa-fw fa-support"></i> Get Help <small>(via Discord)</small></button></a>
     </div>
     <div class="col-xs-6 col-sm-3 text-center">
-        <a href="https://pterodactyl.io"><button class="btn btn-primary" style="width:100%;"><i class="fa fa-fw fa-link"></i> Marketplace</button></a>
+        <a href="https://pterodactylmarket.com"><button class="btn btn-primary" style="width:100%;" target="_blank"><i class="fa fa-fw fa-link"></i> Marketplace</button></a>
     </div>
     <div class="clearfix visible-xs-block">&nbsp;</div>
     <div class="col-xs-6 col-sm-3 text-center">
-        <a href="https://github.com/pterodactyl/panel"><button class="btn btn-primary" style="width:100%;"><i class="fa fa-fw fa-support"></i> Github</button></a>
+        <a href="https://github.com/MelionCloud/PteroPanelFork"><button class="btn btn-primary" style="width:100%;" target="_blank"><i class="fa fa-fw fa-support"></i> Github</button></a>
     </div>
 </div>
 @endsection
