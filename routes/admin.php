@@ -237,5 +237,4 @@ Route::group(['prefix' => 'nests'], function () {
 */
 Route::group(['preifx' => 'addons'], function() {
     Route::get('/', [Admin\Addons\AddonController::class, 'index'])->name('admin.addons');
-    Route::get('/view/{addon:id}', [Admin\Addons\AddonController::class, 'view'])->name('admin.addons.view');
 });

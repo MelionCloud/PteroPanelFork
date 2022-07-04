@@ -13,7 +13,7 @@
     <h1>Addon Overview<small>View all your addons.</small></h1>
     <ol class="breadcrumb">
         <li><a href="{{ route('admin.index') }}">Admin</a></li>
-        <li><a href="{{ route('admin.index') }}">Addons</a></li>
+        <li><a href="{{ route('admin.addons') }}">Addons</a></li>
         <li class="active">Index</li>
     </ol>
 @endsection

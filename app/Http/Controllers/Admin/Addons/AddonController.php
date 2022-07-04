@@ -15,27 +15,10 @@ use Pterodactyl\Http\Controllers\Controller;
 
 class AddonController extends Controller
 {
-
-    public function __construct() {
-
-    }
-
     /**
      * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
      */
     public function index() {
         return view('admin.addons.index');
-    }
-
-    /**
-     * Show the details of an Addon
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function view(int $id) {
-        return view('admin.addons.view', ['addonid' => $id]);
     }
 }
