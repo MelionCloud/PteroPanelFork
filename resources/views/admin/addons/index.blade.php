@@ -21,26 +21,49 @@
 @section('content')
 <div class="row">
     <div class="col-xs-12">
-        <div class="box box-success">
+        <div class="box box-primary">
             <div class="box-header with-border">
-                <h3 class="box-title">Addon Overview</h3>
+                <h3 class="box-title">Addon List (TEST VIEW)</h3>
             </div>
-            <div class="box-body">
-                Welcome to the Addon panel. Here you can view all of your addons and manage them.
+            <div class="box-body table-responsive no-padding">
+                <table class="table table-hover">
+                    <tbody>
+                        <tr>
+                            <th></th>
+                            <th>Addon Name</th>
+                            <th>UUID</th>
+                            <th>Creator</th>
+                            <th></th>
+                            <th></th>
+                        </tr>
+                            <tr data-server="001">
+                                <td><img src="https://pterodactylmarket.com/images/resources/169.webp" /></td>
+                                <td><a href="#">Simple Registration</a></td>
+                                <td><code title="001">001</code></td>
+                                <td>CoasterFreakDE</td>
+                                <td class="text-center">
+                                    <span class="label label-success">Installed</span>
+                                </td>
+                                <td class="text-center">
+                                    <a class="btn btn-xs btn-default" href="#"><i class="fa fa-cog"></i></a>
+                                </td>
+                            </tr>
+                    </tbody>
+                </table>
             </div>
         </div>
     </div>
 </div>
 <div class="row">
     <div class="col-xs-6 col-sm-3 text-center">
-        <a href="https://discord.gg/devsky"><button class="btn btn-warning" style="width:100%;" target="_blank"><i class="fa fa-fw fa-support"></i> Get Help <small>(via Discord)</small></button></a>
+        <a href="https://discord.gg/devsky" target="_blank"><button class="btn btn-warning" style="width:100%;"><i class="fa fa-fw fa-support"></i> Get Help <small>(via Discord)</small></button></a>
     </div>
     <div class="col-xs-6 col-sm-3 text-center">
-        <a href="https://pterodactylmarket.com"><button class="btn btn-primary" style="width:100%;" target="_blank"><i class="fa fa-fw fa-link"></i> Marketplace</button></a>
+        <a href="https://pterodactylmarket.com" target="_blank"><button class="btn btn-primary" style="width:100%;"><i class="fa fa-fw fa-link"></i> Marketplace</button></a>
     </div>
     <div class="clearfix visible-xs-block">&nbsp;</div>
     <div class="col-xs-6 col-sm-3 text-center">
-        <a href="https://github.com/MelionCloud/PteroPanelFork"><button class="btn btn-primary" style="width:100%;" target="_blank"><i class="fa fa-fw fa-support"></i> Github</button></a>
+        <a href="https://github.com/MelionCloud/PteroPanelFork" target="_blank"><button class="btn btn-primary" style="width:100%;"><i class="fa fa-fw fa-support"></i> Github</button></a>
     </div>
 </div>
 @endsection

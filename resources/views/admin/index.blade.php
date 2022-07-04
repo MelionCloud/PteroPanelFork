@@ -34,7 +34,7 @@
             </div>
             <div class="box-body">
                 @if($version->isDevVersion())
-                    You are running Pterodactyl Panel Dev version <code>{{ config('app.version') }}</code>. Your panel is into the newest stuff!
+                    You are running Pterodactyl Panel Dev version <code>{{ config('app.version') }}</code>. Your panel is into the latest stuff! Expect bugs and new features.
                 @elseif ($version->isLatestPanel())
                     You are running Pterodactyl Panel version <code>{{ config('app.version') }}</code>. Your panel is up-to-date!
                 @else
