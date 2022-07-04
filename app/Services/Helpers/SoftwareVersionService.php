@@ -106,7 +106,7 @@ class SoftwareVersionService
      */
     public function isDevVersion()
     {
-        return Str::contains($appVersion, '-');
+        return Str::contains(config()->get('app.version'), '-');
     }
 
     /**
