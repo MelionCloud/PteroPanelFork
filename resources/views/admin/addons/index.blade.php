@@ -37,7 +37,7 @@
                             <th></th>
                         </tr>
                             <tr data-server="001">
-                                <td><img src="https://pterodactylmarket.com/images/resources/169.webp" /></td>
+                                <td><img src="https://pterodactylmarket.com/images/resources/169.webp" height="16px" /></td>
                                 <td><a href="#">Simple Registration</a></td>
                                 <td><code title="001">001</code></td>
                                 <td>CoasterFreakDE</td>
