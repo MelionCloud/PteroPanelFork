@@ -111,11 +111,6 @@
                                 <i class="fa fa-puzzle-piece"></i> <span>Addons</span>
                             </a>
                         </li>
-                        <!-- <li class="{{ ! starts_with(Route::currentRouteName(), 'admin.themes') ?: 'active' }}">
-                            <a href="{{ route('admin.themes') }}">
-                                <i class="fa fa-paint-brush"></i> <span>Themes</span>
-                            </a>
-                        </li> -->
                         <li class="{{ ! starts_with(Route::currentRouteName(), 'admin.servers') ?: 'active' }}">
                             <a href="{{ route('admin.servers') }}">
                                 <i class="fa fa-server"></i> <span>Servers</span>
