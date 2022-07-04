@@ -6,6 +6,7 @@ use Exception;
 use GuzzleHttp\Client;
 use Carbon\CarbonImmutable;
 use Illuminate\Support\Arr;
+use Illuminate\Support\Str;
 use Illuminate\Contracts\Cache\Repository as CacheRepository;
 use Pterodactyl\Exceptions\Service\Helper\CdnVersionFetchingException;
 
@@ -105,7 +106,7 @@ class SoftwareVersionService
      */
     public function isDevVersion()
     {
-        return str_contains($appVersion, '-');
+        return Str::contains($appVersion, '-');
     }
 
     /**
@@ -120,7 +121,7 @@ class SoftwareVersionService
             return true;
         }
 
-        if (str_contains($appVersion, '-')) {
+        if (Str::contains($appVersion, '-')) {
             return version_compare($appVersion, $this->getPanel()) >= 0;
         }
 
