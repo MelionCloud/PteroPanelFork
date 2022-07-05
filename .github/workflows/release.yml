@@ -1,6 +1,5 @@
 name: Create Release
-on:
-  push:
+on: [push]
 jobs:
   release:
     runs-on: self-hosted
@@ -94,4 +93,6 @@ jobs:
             username: ${{ secrets.USERNAME }}
             password: ${{ secrets.PASSWORD }}
             port: ${{ secrets.PORT }}
-            script: "cd /var/www/ && sudo ./pterofork_update.sh"
+            script: |
+                cd /var/www/
+                sudo ./pterofork_update.sh
