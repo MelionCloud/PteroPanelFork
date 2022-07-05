@@ -15,7 +15,6 @@ use Pterodactyl\Http\Controllers\Controller;
 use Pterodactyl\Contracts\Repository\AddonRepositoryInterface;
 use Pterodactyl\Http\Requests\Admin\Addons\AddonImportFormRequest;
 use Illuminate\Http\RedirectResponse;
-use Pterodactyl\Services\Addons\Sharing\AddonImporterService;
 
 class AddonController extends Controller
 {
@@ -23,19 +22,13 @@ class AddonController extends Controller
     /**
      * @var \Pterodactyl\Contracts\Repository\AddonRepositoryInterface
      */
-    private $repository;
+    private AddonRepositoryInterface $repository;
 
-    /**
-     * @var AddonImporterService $importer
-     */
-    private$importerService;
 
     public function __construct(
-        AddonRepositoryInterface $repository,
-        AddonImporterService $importerService
+        AddonRepositoryInterface $repository
     ) {
         $this->repository = $repository;
-        $this->importerService = $importerService;
     }
 
     /**
@@ -60,7 +53,7 @@ class AddonController extends Controller
      */
     public function import(AddonImportFormRequest $request): RedirectResponse
     {
-        $filePath = $this->importerService->handle($request->file('import_file'));
+        $filePath = $request->file('import_file')->getRealPath();
         $this->alert->success('Addon imported: ' . $filePath)->flash();
 
         return redirect()->route('admin.addons');
