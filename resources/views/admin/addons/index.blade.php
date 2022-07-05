@@ -24,6 +24,9 @@
         <div class="box box-primary">
             <div class="box-header with-border">
                 <h3 class="box-title">Addon List (TEST VIEW)</h3>
+                <div class="box-tools">
+                    <a href="#" class="btn btn-sm btn-success" data-toggle="modal" data-target="#importAddonOptionModal" role="button"><i class="fa fa-upload"></i> Import Addon</a>
+                </div>
             </div>
             <div class="box-body table-responsive no-padding">
                 <table class="table table-hover">
@@ -45,16 +48,14 @@
                                 <td><a href="{{ $addon->website }}">{{ $addon->name }}</a></td>
                                 <td><code title="{{ $addon->uuid }}">{{ $addon->uuid }}</code></td>
                                 <td>{{ $addon->version }}</td>
-                                <td>{{ $addon->creator }}</td>
-                                <td class="text-center">
-                                    @if($addon->isEnabled())
-                                        <span class="label label-success">Installed</span>
-                                    @elseif($addon->isInstalled())
-                                        <span class="label label-warning">Disabled</span>
-                                    @else
-                                        <span class="label label-danger">Not Installed</span>
-                                    @endif
-                                </td>
+                                <td>{{ $addon->author }}</td>
+                                @if($addon->isEnabled())
+                                    <span class="label label-success">Installed</span>
+                                @elseif($addon->isInstalled())
+                                    <span class="label label-warning">Disabled</span>
+                                @else
+                                    <span class="label label-danger">Not Installed</span>
+                                @endif
                                 <td><code title="{{ $addon->created_at }}">{{ $addon->created_at }}</code></td>
                                 <td><code title="{{ $addon->updated_at }}">{{ $addon->updated_at }}</code></td>
                                 <td class="text-center">
