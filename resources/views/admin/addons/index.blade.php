@@ -32,22 +32,36 @@
                             <th></th>
                             <th>Addon Name</th>
                             <th>UUID</th>
+                            <th>Version</th>
                             <th>Creator</th>
+                            <th>Released</th>
+                            <th>Updated</th>
                             <th></th>
                             <th></th>
                         </tr>
-                            <tr data-server="001">
-                                <td><img src="https://pterodactylmarket.com/images/resources/169.webp" height="16px" /></td>
-                                <td><a href="#">Simple Registration</a></td>
-                                <td><code title="001">001</code></td>
-                                <td>CoasterFreakDE</td>
+                        @foreach ($addons as $addon)
+                            <tr data-server="{{ $addon->uuidShort }}">
+                                <td><img src="{{ $addon->image }}" height="16px"  alt="Logo"/></td>
+                                <td><a href="{{ $addon->website }}">{{ $addon->name }}</a></td>
+                                <td><code title="{{ $addon->uuid }}">{{ $addon->uuid }}</code></td>
+                                <td>{{ $addon->version }}</td>
+                                <td>{{ $addon->creator }}</td>
                                 <td class="text-center">
-                                    <span class="label label-success">Installed</span>
+                                    @if($addon->isEnabled())
+                                        <span class="label label-success">Installed</span>
+                                    @elseif($addon->isInstalled())
+                                        <span class="label label-warning">Disabled</span>
+                                    @else
+                                        <span class="label label-danger">Not Installed</span>
+                                    @endif
                                 </td>
+                                <td><code title="{{ $addon->created_at }}">{{ $addon->created_at }}</code></td>
+                                <td><code title="{{ $addon->updated_at }}">{{ $addon->updated_at }}</code></td>
                                 <td class="text-center">
                                     <a class="btn btn-xs btn-default" href="#"><i class="fa fa-cog"></i></a>
                                 </td>
                             </tr>
+                        @endforeach
                     </tbody>
                 </table>
             </div>

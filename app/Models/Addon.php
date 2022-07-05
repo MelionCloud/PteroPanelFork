@@ -26,12 +26,11 @@ namespace Pterodactyl\Models;
  * @method static \Illuminate\Database\Query\Builder|\Pterodactyl\Models\Addon whereUuidShort($value)
  * @method static \Illuminate\Database\Query\Builder|\Pterodactyl\Models\Addon whereName($value)
  * @method static \Illuminate\Database\Query\Builder|\Pterodactyl\Models\Addon whereDescription($value)
- * @method static \Illuminate\Database\Query\Builder|\Pterodactyl\Models\Addon whereVersion($value)
- * @method static \Illuminate\Database\Query\Builder|\Pterodactyl\Models\Addon whereAuthor($value)
- * @method static \Illuminate\Database\Query\Builder|\Pterodactyl\Models\Addon whereWebsite($value)
+ * @method static \Illuminate\Database\Query\Builder|\Pterodactyl\Models\Addon[] whereVersion($value)
+ * @method static \Illuminate\Database\Query\Builder|\Pterodactyl\Models\Addon[] whereAuthor($value)
  * @method static \Illuminate\Database\Query\Builder|\Pterodactyl\Models\Addon whereLicense($value)
- * @method static \Illuminate\Database\Query\Builder|\Pterodactyl\Models\Addon whereEnabled($value)
- * @method static \Illuminate\Database\Query\Builder|\Pterodactyl\Models\Addon whereInstalled($value)
+ * @method static \Illuminate\Database\Query\Builder|\Pterodactyl\Models\Addon[] whereEnabled($value)
+ * @method static \Illuminate\Database\Query\Builder|\Pterodactyl\Models\Addon[] whereInstalled($value)
  * @mixin \Eloquent
  */
 class Addon extends Model
@@ -73,4 +72,14 @@ class Addon extends Model
         'created_at' => 'date|nullable',
         'updated_at' => 'date|nullable'
     ];
+
+    public function isInstalled(): bool
+    {
+        return $this->installed;
+    }
+
+    public function isEnabled(): bool
+    {
+        return $this->enabled;
+    }
 }

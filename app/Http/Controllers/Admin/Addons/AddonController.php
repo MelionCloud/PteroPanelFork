@@ -13,6 +13,7 @@ use Javascript;
 use Illuminate\View\View;
 use Pterodactyl\Http\Controllers\Controller;
 use Pterodactyl\Contracts\Repository\AddonRepositoryInterface;
+use Pterodactyl\Models\Addon;
 
 class AddonController extends Controller
 {
@@ -26,7 +27,7 @@ class AddonController extends Controller
         AddonRepositoryInterface $repository
     ) {
         parent::__construct();
-        
+
         $this->repository = $repository;
     }
 
@@ -34,7 +35,12 @@ class AddonController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index() {
-        return view('admin.addons.index');
+    public function index(Request $request)
+    {
+        $addons = $this->repository->all();
+
+        return view('admin.addons.index', [
+            'addons' => $addons,
+        ]);
     }
 }
