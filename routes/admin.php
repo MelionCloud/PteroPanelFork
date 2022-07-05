@@ -238,5 +238,5 @@ Route::group(['prefix' => 'nests'], function () {
 Route::group(['prefix' => 'addons'], function() {
     Route::get('/', [Admin\Addons\AddonController::class, 'index'])->name('admin.addons');
 
-    Route::post('/import', [Admin\Nests\EggShareController::class, 'import'])->name('admin.addons.import');
+    Route::post('/import', [Admin\Addons\AddonController::class, 'import'])->name('admin.addons.import');
 });
