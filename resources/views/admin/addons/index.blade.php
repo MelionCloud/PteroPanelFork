@@ -37,6 +37,7 @@
                             <th>UUID</th>
                             <th>Version</th>
                             <th>Creator</th>
+                            <th>Status</th>
                             <th>Released</th>
                             <th>Updated</th>
                             <th></th>
@@ -44,7 +45,7 @@
                         </tr>
                         @foreach ($addons as $addon)
                             <tr data-server="{{ $addon->uuidShort }}">
-                                <td><img src="{{ $addon->image }}" height="16px"  alt="Logo" /></td>
+                                <td><img src="{{ $addon->image }}" height="24px"  alt="Logo" /></td>
                                 <td><a href="{{ $addon->website }}">{{ $addon->name }}</a></td>
                                 <td><code title="{{ $addon->uuid }}">{{ $addon->uuid }}</code></td>
                                 <td>{{ $addon->version }}</td>
