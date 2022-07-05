@@ -35,7 +35,7 @@ class AddonController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index(Request $request)
+    public function index()
     {
         $addons = $this->repository->all();
 
