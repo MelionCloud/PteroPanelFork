@@ -49,6 +49,7 @@
                                 <td><code title="{{ $addon->uuid }}">{{ $addon->uuid }}</code></td>
                                 <td>{{ $addon->version }}</td>
                                 <td>{{ $addon->author }}</td>
+                                <td>
                                 @if($addon->isEnabled())
                                     <span class="label label-success">Installed</span>
                                 @elseif($addon->isInstalled())
@@ -56,6 +57,7 @@
                                 @else
                                     <span class="label label-danger">Not Installed</span>
                                 @endif
+                                </td>
                                 <td><code title="{{ $addon->created_at }}">{{ $addon->created_at }}</code></td>
                                 <td><code title="{{ $addon->updated_at }}">{{ $addon->updated_at }}</code></td>
                                 <td class="text-center">

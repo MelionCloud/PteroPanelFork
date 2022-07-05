@@ -2,6 +2,10 @@
 
 namespace Pterodactyl\Models;
 
+use Carbon\Carbon;
+use Database\Factories\AddonFactory;
+use Illuminate\Database\Query\Builder;
+
 /**
  * Pterodactyl\Models\Addon.
  *
@@ -17,20 +21,20 @@ namespace Pterodactyl\Models;
  * @property string $license
  * @property bool $enabled
  * @property bool $installed
- * @property \Carbon\Carbon $created_at
- * @property \Carbon\Carbon $updated_at
+ * @property Carbon $created_at
+ * @property Carbon $updated_at
  *
- * @method statis \Database\Factories\AddonFactory factory(...$parameters)
- * @method static \Illuminate\Database\Query\Builder|\Pterodactyl\Models\Addon whereId($value)
- * @method static \Illuminate\Database\Query\Builder|\Pterodactyl\Models\Addon whereUuid($value)
- * @method static \Illuminate\Database\Query\Builder|\Pterodactyl\Models\Addon whereUuidShort($value)
- * @method static \Illuminate\Database\Query\Builder|\Pterodactyl\Models\Addon whereName($value)
- * @method static \Illuminate\Database\Query\Builder|\Pterodactyl\Models\Addon whereDescription($value)
- * @method static \Illuminate\Database\Query\Builder|\Pterodactyl\Models\Addon[] whereVersion($value)
- * @method static \Illuminate\Database\Query\Builder|\Pterodactyl\Models\Addon[] whereAuthor($value)
- * @method static \Illuminate\Database\Query\Builder|\Pterodactyl\Models\Addon whereLicense($value)
- * @method static \Illuminate\Database\Query\Builder|\Pterodactyl\Models\Addon[] whereEnabled($value)
- * @method static \Illuminate\Database\Query\Builder|\Pterodactyl\Models\Addon[] whereInstalled($value)
+ * @method static AddonFactory factory(...$parameters)
+ * @method static Builder|Addon whereId($value)
+ * @method static Builder|Addon whereUuid($value)
+ * @method static Builder|Addon whereUuidShort($value)
+ * @method static Builder|Addon whereName($value)
+ * @method static Builder|Addon whereDescription($value)
+ * @method static Builder|Addon[] whereVersion($value)
+ * @method static Builder|Addon[] whereAuthor($value)
+ * @method static Builder|Addon whereLicense($value)
+ * @method static Builder|Addon[] whereEnabled($value)
+ * @method static Builder|Addon[] whereInstalled($value)
  * @mixin \Eloquent
  */
 class Addon extends Model
@@ -70,7 +74,7 @@ class Addon extends Model
         'enabled' => 'boolean',
         'installed' => 'boolean',
         'created_at' => 'date|nullable',
-        'updated_at' => 'date|nullable'
+        'updated_at' => 'date|nullable',
     ];
 
     public function isInstalled(): bool

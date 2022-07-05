@@ -2,16 +2,15 @@
 
 namespace Pterodactyl\Contracts\Repository;
 
+use Pterodactyl\Exceptions\Repository\RecordNotFoundException;
 use Pterodactyl\Models\Addon;
-use Illuminate\Support\Collection;
-use Illuminate\Contracts\Pagination\LengthAwarePaginator;
 
 interface AddonRepositoryInterface extends RepositoryInterface
 {
     /**
-     * Return a Addon by Name.
+     * Return an Addon by Name.
      *
-     * @throws \Pterodactyl\Exceptions\Repository\RecordNotFoundException
+     * @throws RecordNotFoundException
      */
     public function getByName(string $name): Addon;
 

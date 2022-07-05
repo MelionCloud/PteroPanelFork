@@ -9,8 +9,10 @@
 
 namespace Pterodactyl\Http\Controllers\Admin\Addons;
 
-use Javascript;
-use Illuminate\View\View;
+use Pterodactyl\Exceptions\Model\DataValidationException;
+use Pterodactyl\Exceptions\Repository\RecordNotFoundException;
+use Pterodactyl\Exceptions\Service\Egg\BadJsonFormatException;
+use Pterodactyl\Exceptions\Service\InvalidFileUploadException;
 use Pterodactyl\Http\Controllers\Controller;
 use Pterodactyl\Contracts\Repository\AddonRepositoryInterface;
 use Pterodactyl\Http\Requests\Admin\Addons\AddonImportFormRequest;
@@ -20,7 +22,7 @@ class AddonController extends Controller
 {
 
     /**
-     * @var \Pterodactyl\Contracts\Repository\AddonRepositoryInterface
+     * @var AddonRepositoryInterface
      */
     private AddonRepositoryInterface $repository;
 
@@ -46,10 +48,10 @@ class AddonController extends Controller
     /**
      * Import a new service option using an XML file.
      *
-     * @throws \Pterodactyl\Exceptions\Model\DataValidationException
-     * @throws \Pterodactyl\Exceptions\Repository\RecordNotFoundException
-     * @throws \Pterodactyl\Exceptions\Service\Egg\BadJsonFormatException
-     * @throws \Pterodactyl\Exceptions\Service\InvalidFileUploadException
+     * @throws DataValidationException
+     * @throws RecordNotFoundException
+     * @throws BadJsonFormatException
+     * @throws InvalidFileUploadException
      */
     public function import(AddonImportFormRequest $request): RedirectResponse
     {

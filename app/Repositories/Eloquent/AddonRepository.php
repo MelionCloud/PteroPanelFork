@@ -23,14 +23,14 @@ class AddonRepository extends EloquentRepository implements AddonRepositoryInter
     }
 
     /**
-     * Return a Addon by Name.
+     * Return an Addon by Name.
      *
-     * @throws \Pterodactyl\Exceptions\Repository\RecordNotFoundException
+     * @throws RecordNotFoundException
      */
     public function getByName(string $name): Addon
     {
         try {
-            /** @var \Pterodactyl\Models\Addon $model */
+            /** @var Addon $model */
             $model = $this->getBuilder()
                 ->where('name', '=', $name)
                 ->firstOrFail($this->getColumns());
