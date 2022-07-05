@@ -9,11 +9,15 @@ jobs:
         with:
           node-version: '16.x'
 
+      - name: Get current date
+        id: date
+        run: echo "::set-output name=date::$(date +'%Y-%m-%d')"
+
       - name: Create release branch and bump version
         env:
           REF: ${{ github.ref }}
         run: |
-          BRANCH=release${REF:10}
+          BRANCH=release${REF:10}/${{ steps.date.outputs.date }}
           git config --local user.email "ci@pterodactyl.io"
           git config --local user.name "Pterodactyl CI"
           git checkout -b $BRANCH
@@ -46,10 +50,6 @@ jobs:
           SUM=`sha256sum panel.tar.gz`
           echo -e "\n#### SHA256 Checksum\n\n\`\`\`\n$SUM\n\`\`\`\n" >> ./RELEASE_CHANGELOG
           echo $SUM > checksum.txt
-
-      - name: Get current date
-        id: date
-        run: echo "::set-output name=date::$(date +'%Y-%m-%d')"
 
       - name: Create Release
         id: create_release
