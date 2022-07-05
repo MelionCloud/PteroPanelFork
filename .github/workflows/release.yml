@@ -13,7 +13,7 @@ jobs:
         env:
           REF: ${{ github.ref }}
         run: |
-          BRANCH=release/${REF:10}
+          BRANCH=release${REF:10}
           git config --local user.email "ci@pterodactyl.io"
           git config --local user.name "Pterodactyl CI"
           git checkout -b $BRANCH
