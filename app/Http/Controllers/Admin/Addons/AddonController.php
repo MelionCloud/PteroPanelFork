@@ -15,7 +15,7 @@ use Pterodactyl\Http\Controllers\Controller;
 use Pterodactyl\Contracts\Repository\AddonRepositoryInterface;
 use Pterodactyl\Http\Requests\Admin\Addons\AddonImportFormRequest;
 use Illuminate\Http\RedirectResponse;
-use Pterodactyl\Services\Eggs\Sharing\AddonImporterService;
+use Pterodactyl\Services\Addons\Sharing\AddonImporterService;
 
 class AddonController extends Controller
 {

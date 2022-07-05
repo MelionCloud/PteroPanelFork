@@ -1,18 +1,15 @@
 <?php
 
-namespace Pterodactyl\Services\Eggs\Sharing;
+namespace Pterodactyl\Services\Addons\Sharing;
 
 use Ramsey\Uuid\Uuid;
 use Illuminate\Support\Arr;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Database\ConnectionInterface;
-use Pterodactyl\Services\Eggs\EggParserService;
 
 class AddonImporterService
 {
     protected ConnectionInterface $connection;
-
-    protected EggParserService $parser;
 
     public function __construct(ConnectionInterface $connection)
     {
