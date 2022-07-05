@@ -41,7 +41,6 @@
                             <th>Released</th>
                             <th>Updated</th>
                             <th></th>
-                            <th></th>
                         </tr>
                         @foreach ($addons as $addon)
                             <tr data-server="{{ $addon->uuidShort }}">
