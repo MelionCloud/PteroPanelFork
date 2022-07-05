@@ -12,9 +12,25 @@ namespace Pterodactyl\Http\Controllers\Admin\Addons;
 use Javascript;
 use Illuminate\View\View;
 use Pterodactyl\Http\Controllers\Controller;
+use Pterodactyl\Contracts\Repository\AddonRepositoryInterface;
 
 class AddonController extends Controller
 {
+
+    /**
+     * @var \Pterodactyl\Contracts\Repository\AddonRepositoryInterface
+     */
+    private $repository;
+
+    public function _construct(
+        AddonRepositoryInterface $repository
+    ) {
+        parent::__construct();
+        
+        $this->repository = $repository;
+    }
+
+
     /**
      * Display a listing of the resource.
      */
