@@ -22,7 +22,7 @@ jobs:
           git config --local user.name "Pterodactyl CI"
           git checkout -b $BRANCH
           git push -u origin $BRANCH
-          sed -i -E "s/    'version' => 'canary',/    'version' => '${REF:11}',/" config/app.php
+          sed -i "s/    'version' => 'canary',/    'version' => '${REF:11}',/" config/app.php
           git add config/app.php
           git commit -m "bump version for release"
           git push
