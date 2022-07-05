@@ -23,14 +23,9 @@ class AddonController extends Controller
      */
     private $repository;
 
-    public function _construct(
-        AddonRepositoryInterface $repository
-    ) {
-        parent::__construct();
-
+    public function __construct(AddonRepositoryInterface $repository) {
         $this->repository = $repository;
     }
-
 
     /**
      * Display a listing of the resource.
