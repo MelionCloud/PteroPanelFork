@@ -44,7 +44,7 @@
                         </tr>
                         @foreach ($addons as $addon)
                             <tr data-server="{{ $addon->uuidShort }}">
-                                <td><img src="{{ $addon->image }}" height="16px"  alt="Logo"/></td>
+                                <td><img src="{{ $addon->image }}" height="16px"  alt="Logo" /></td>
                                 <td><a href="{{ $addon->website }}">{{ $addon->name }}</a></td>
                                 <td><code title="{{ $addon->uuid }}">{{ $addon->uuid }}</code></td>
                                 <td>{{ $addon->version }}</td>
@@ -79,6 +79,32 @@
     <div class="clearfix visible-xs-block">&nbsp;</div>
     <div class="col-xs-6 col-sm-3 text-center">
         <a href="https://github.com/MelionCloud/PteroPanelFork" target="_blank"><button class="btn btn-primary" style="width:100%;"><i class="fa fa-fw fa-support"></i> Github</button></a>
+    </div>
+</div>
+<div class="modal fade" tabindex="-1" role="dialog" id="importAddonOptionModal">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">Import an Egg</h4>
+            </div>
+            <form action="{{ route('admin.addons.import') }}" enctype="multipart/form-data" method="POST">
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label class="control-label" for="pImportFile">Addon Package <span class="field-required"></span></label>
+                        <div>
+                            <input id="pImportFile" type="file" name="import_file" class="form-control" accept="application/zip" />
+                            <p class="small text-muted">Select the <code>.zip</code> file for the new addon that you wish to import.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    {{ csrf_field() }}
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                    <button type="submit" class="btn btn-primary">Import</button>
+                </div>
+            </form>
+        </div>
     </div>
 </div>
 @endsection
