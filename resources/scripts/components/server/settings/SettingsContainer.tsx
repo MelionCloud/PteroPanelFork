@@ -80,6 +80,8 @@ export default () => {
                     <Can action={'settings.reinstall'}>
                         <ReinstallServerBox />
                     </Can>
+                </div>
+                <div css={tw`w-full mt-6 md:flex-1 md:mt-0`}>
                     <Can action={'file.create'}>
                         <UploadServerIconBox />
                     </Can>
