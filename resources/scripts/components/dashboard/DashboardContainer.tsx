@@ -53,7 +53,7 @@ export default () => {
             {rootAdmin && (
                 <div css={tw`mb-2 flex justify-end items-center`}>
                     <p css={tw`uppercase text-xs text-neutral-400 mr-2`}>
-                        {showOnlyAdmin ? "Showing others' servers" : 'Showing your servers'}
+                        {showOnlyAdmin ? 'Zeige freigegebene Server' : 'Zeige eigene Server'}
                     </p>
                     <Switch
                         name={'show_all_servers'}
@@ -74,8 +74,8 @@ export default () => {
                         ) : (
                             <p css={tw`text-center text-sm text-neutral-400`}>
                                 {showOnlyAdmin
-                                    ? 'There are no other servers to display.'
-                                    : 'There are no servers associated with your account.'}
+                                    ? 'Dir wurden keine anderen Server freigegeben.'
+                                    : 'Du hast noch keine Bot-Hosts. Erstelle dir welche in unserem Discord.'}
                             </p>
                         )
                     }
